@@ -1,1 +1,3 @@
-declare interface ApplicationState {}
+declare interface ApplicationState {
+  pokedex: PokedexState;
+}
