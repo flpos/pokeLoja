@@ -12,4 +12,4 @@ export const pokemonRequest = createAsyncAction(
   '@pokemonRequest/FAILURE'
 )<string, Array<Pokemon>, string>();
 
-export const selectType = createAction('@type/SELECT')<PokemonType>();
+export const selectType = createAction('@type/SELECT')<string>();
