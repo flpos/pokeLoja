@@ -6,7 +6,7 @@ export const getTypes = () =>
       return res.json();
     })
     .then((result): PokemonType[] => {
-      return result.results;
+      return result.results.slice(0, -2); // Tipos Unknown e Shadow vazios.
     });
 
 export const getPokemonList = (url: string) =>
