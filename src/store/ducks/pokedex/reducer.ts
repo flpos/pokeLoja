@@ -1,5 +1,11 @@
 import { createReducer } from 'typesafe-actions';
-import { typesRequest, selectType, pokemonRequest } from './actions';
+import {
+  typesRequest,
+  selectType,
+  pokemonRequest,
+  setFilter,
+  persistRehydrate,
+} from './actions';
 
 const generatePrice = () => Math.random() * 3 + 7;
 
@@ -8,6 +14,7 @@ const getIdFromURL = (url: string) => Number.parseInt(url.split('/')[6]);
 const INIT_STATE: PokedexState = {
   AvailibleTypes: [],
   indexedPokemon: {},
+  filter: '',
 };
 
 export default createReducer(INIT_STATE)
@@ -19,6 +26,21 @@ export default createReducer(INIT_STATE)
     ...state,
     selectedType: state.AvailibleTypes.find((t) => t.name === action.payload),
   }))
+  .handleAction(setFilter, (state, action) => ({
+    ...state,
+    filter: action.payload,
+  }))
+  .handleAction(persistRehydrate, (_, action) => {
+    const {
+      payload: { pokedex },
+    } = action;
+    return pokedex
+      ? {
+          ...pokedex,
+          filter: '',
+        }
+      : INIT_STATE;
+  })
   .handleAction(pokemonRequest.success, (state, action) => {
     const indexedPokemon: Dictionary<IndexedPokemon> = {
       ...state.indexedPokemon,

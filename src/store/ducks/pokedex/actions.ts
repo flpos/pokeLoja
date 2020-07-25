@@ -13,3 +13,7 @@ export const pokemonRequest = createAsyncAction(
 )<string, Array<Pokemon>, string>();
 
 export const selectType = createAction('@type/SELECT')<string>();
+
+export const setFilter = createAction('@filter/SET')<string>();
+
+export const persistRehydrate = createAction('persist/REHYDRATE')<any>();

@@ -1,6 +1,25 @@
 // Data Types
+declare type TypeName =
+  | 'normal'
+  | 'fire'
+  | 'water'
+  | 'electric'
+  | 'grass'
+  | 'ice'
+  | 'fighting'
+  | 'poison'
+  | 'ground'
+  | 'flying'
+  | 'psychic'
+  | 'bug'
+  | 'rock'
+  | 'ghost'
+  | 'dragon'
+  | 'dark'
+  | 'steel'
+  | 'fairy';
 declare interface PokemonType {
-  name: string;
+  name: TypeName;
   url: string;
 }
 declare interface Pokemon {
@@ -21,4 +40,5 @@ declare interface PokedexState {
   AvailibleTypes: Array<PokemonType>;
   pokemon?: Array<Pokemon>;
   indexedPokemon: Dictionary<IndexedPokemon>;
+  filter: string;
 }
