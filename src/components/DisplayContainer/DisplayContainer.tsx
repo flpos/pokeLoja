@@ -6,14 +6,15 @@ import DisplayItem from './DisplayItem';
 
 interface DisplayContainerProps {
   pokemon?: Array<Pokemon>;
+  loading?: boolean;
 }
 
 const DisplayContainer: React.FC<DisplayContainerProps> = (
   props: DisplayContainerProps
 ) => {
-  const { pokemon } = props;
+  const { pokemon, loading } = props;
   return (
-    <DisplayWrapper>
+    <DisplayWrapper className={loading ? 'loading' : ''}>
       {pokemon?.map((poke) => (
         <DisplayItem name={poke.name} key={`pokemon-item-${poke.url}`} />
       ))}
@@ -26,6 +27,7 @@ const mapStateToProps = (state: ApplicationState) => ({
     const rgx = new RegExp(state.pokedex.filter);
     return rgx.test(poke.name);
   }),
+  loading: state.pokedex.loading,
 });
 
 export default connect(mapStateToProps)(DisplayContainer);

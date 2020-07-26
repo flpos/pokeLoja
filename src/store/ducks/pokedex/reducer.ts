@@ -25,6 +25,7 @@ export default createReducer(INIT_STATE)
   .handleAction(selectType, (state, action) => ({
     ...state,
     selectedType: state.AvailibleTypes.find((t) => t.name === action.payload),
+    loading: true,
   }))
   .handleAction(setFilter, (state, action) => ({
     ...state,
@@ -57,5 +58,6 @@ export default createReducer(INIT_STATE)
       ...state,
       pokemon: action.payload,
       indexedPokemon,
+      loading: false,
     };
   });

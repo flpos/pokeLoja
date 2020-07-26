@@ -5,4 +5,7 @@ export const DisplayWrapper = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
   grid-gap: 20px 16px;
   padding: 20px 16px;
+  &.loading {
+    opacity: 0.3;
+  }
 `;

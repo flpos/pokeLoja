@@ -41,4 +41,5 @@ declare interface PokedexState {
   pokemon?: Array<Pokemon>;
   indexedPokemon: Dictionary<IndexedPokemon>;
   filter: string;
+  loading?: boolean;
 }
