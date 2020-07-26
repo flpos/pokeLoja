@@ -32,15 +32,17 @@ export default createReducer(INIT_STATE)
     filter: action.payload,
   }))
   .handleAction(persistRehydrate, (_, action) => {
-    const {
-      payload: { pokedex },
-    } = action;
-    return pokedex
-      ? {
-          ...pokedex,
-          filter: '',
-        }
-      : INIT_STATE;
+    try {
+      const {
+        payload: { pokedex },
+      } = action;
+      return {
+        ...pokedex,
+        filter: '',
+      };
+    } catch (e) {
+      return INIT_STATE;
+    }
   })
   .handleAction(pokemonRequest.success, (state, action) => {
     const indexedPokemon: Dictionary<IndexedPokemon> = {
