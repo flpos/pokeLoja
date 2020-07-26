@@ -1,3 +1,12 @@
+import { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+  * {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+`;
+
 export const theme = {
   normal: { primary: '#A8A77A' },
   fire: { primary: '#EE8130' },

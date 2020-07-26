@@ -12,7 +12,7 @@ import {
   Content,
   Aside,
 } from './components/layout';
-import { theme } from './theme';
+import { theme, GlobalStyle } from './theme';
 
 interface AppProps {
   selectedType?: PokemonType;
@@ -35,6 +35,7 @@ const App: React.FC<AppProps> = (props) => {
           </Content>
         </Container>
       </ApplicationWrapper>
+      <GlobalStyle />
     </ThemeProvider>
   );
 };
