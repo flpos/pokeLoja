@@ -13,6 +13,9 @@ export const ApplicationWrapper = styled.div`
   height: 100vh;
   max-width: 100vw;
   background-color: ${(props) => props.theme.primary}33;
+  @media (max-width: 425px) {
+    grid-template-rows: 104px calc(100vh - 104px);
+  }
 `;
 
 export const Content = styled.div`

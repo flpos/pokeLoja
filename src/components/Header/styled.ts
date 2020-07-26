@@ -20,15 +20,44 @@ export const HeaderContent = styled.div`
   @media (max-width: 960px) {
     padding: 16px;
   }
+  @media (max-width: 425px) {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+  }
 `;
 
 export const SearchBar = styled.input`
-  padding: 8px;
+  padding: 9px;
   border-radius: 4px;
   border: none;
-  transition: linear .2s;
+  transition: linear 0.2s;
   :focus {
     outline: none;
     box-shadow: 0px 1px 4px black;
+  }
+`;
+
+export const Label = styled.label`
+  background-color: white;
+  color: black;
+  padding: 0px 9px;
+  border-radius: 4px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 13px;
+  @media (max-width: 425px) {
+    margin-top: 8px;
+  }
+`;
+
+export const Select = styled.select`
+  padding: 8px;
+  border: none;
+  font-size: 13px;
+  background-color: transparent;
+  :focus {
+    outline: none;
   }
 `;

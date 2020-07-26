@@ -37,6 +37,9 @@ const Button = styled.button`
     background: linear-gradient(to top, #eeea, #f0f0f0aa),
       ${(props) => props.theme.primary};
   }
+  :focus {
+    outline: none;
+  }
 `;
 
 interface DisplayOwnProps {

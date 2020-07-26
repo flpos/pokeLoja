@@ -8,7 +8,7 @@ import {
   setFilter,
 } from '../../store/ducks/pokedex/actions';
 import { Container } from '../layout';
-import { HeaderBar, HeaderContent, SearchBar } from './styled';
+import { HeaderBar, HeaderContent, SearchBar, Select, Label } from './styled';
 
 interface HeaderProps {
   types: Array<PokemonType>;
@@ -32,9 +32,9 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
             placeholder='Pesquisar...'
             onChange={(e) => setFilter(e.target.value)}
           />
-          <label htmlFor='type-selector'>
+          <Label htmlFor='type-selector'>
             Lojas:
-            <select
+            <Select
               id='type-selector'
               value={selectedType?.name || ''}
               onChange={(event) => selectType(event.target.value)}
@@ -50,8 +50,8 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
                   {type.name}
                 </option>
               ))}
-            </select>
-          </label>
+            </Select>
+          </Label>
         </HeaderContent>
       </Container>
     </HeaderBar>
