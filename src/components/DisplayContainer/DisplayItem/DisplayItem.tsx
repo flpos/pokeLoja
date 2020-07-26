@@ -17,6 +17,7 @@ const DisplayItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   border: 1px solid ${(props) => props.theme.primary}33;
   border-radius: 4px;
   overflow: hidden;

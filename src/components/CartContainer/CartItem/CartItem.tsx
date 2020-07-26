@@ -3,16 +3,39 @@ import styled from 'styled-components';
 import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import missingNo from '../../../assets/img/missing-no.png';
 import moneyFormatter from '../../../util/moneyFormatter';
 import { cartRemove } from '../../../store/ducks/cart/actions';
 
 const ListItem = styled.div`
   display: flex;
+  padding: 12px 8px;
   justify-content: space-between;
   align-items: center;
   p {
     display: flex;
     align-items: center;
+  }
+`;
+
+const ItemData = styled.div`
+  flex-grow: 1;
+`;
+
+const Button = styled.button`
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 0px;
+  background-color: darkred;
+  color: white;
+  transition: 0.2s linear;
+  :hover {
+    background-color: red;
+    color: black;
+  }
+  :focus {
+    outline: none;
   }
 `;
 
@@ -32,15 +55,19 @@ const Cartitem: React.FC<CartItemProps> = (props) => {
   const { name, price, id } = pokemon;
   return (
     <ListItem>
-      <p>
-        <Img
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-          alt={`Imagem do ${name}`}
-        />
-        {name}
-      </p>
-      <p>{moneyFormatter.format(price)}</p>
-      <button onClick={() => cartRemove(index)}>remover</button>
+      <Img
+        src={
+          id < 10091
+            ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+            : missingNo
+        }
+        alt={`${name}`}
+      />
+      <ItemData>
+        <p>{name}</p>
+        <p>{moneyFormatter.format(price)}</p>
+      </ItemData>
+      <Button onClick={() => cartRemove(index)}>X</Button>
     </ListItem>
   );
 };

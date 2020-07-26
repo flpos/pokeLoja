@@ -5,6 +5,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import moneyFormatter from '../../util/moneyFormatter';
 import CartItem from './CartItem';
 import { cartClear } from '../../store/ducks/cart/actions';
+import { CartWrapper, ItemContainer, CartStatus, FinishButton } from './styled';
 
 interface CartProps {
   cartItems: Array<IndexedPokemon>;
@@ -14,15 +15,8 @@ interface CartProps {
 const Cart: React.FC<CartProps> = (props: CartProps) => {
   const { cartItems, cartClear } = props;
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        overflow: 'auto',
-      }}
-    >
-      <div style={{ flexGrow: 1 }}>
+    <CartWrapper>
+      <ItemContainer>
         {cartItems.map((cartItem, i) => (
           <CartItem
             key={`cartItem${cartItem.id * (i + 1)}`}
@@ -30,17 +24,17 @@ const Cart: React.FC<CartProps> = (props: CartProps) => {
             index={i}
           />
         ))}
-      </div>
-      <div>
+      </ItemContainer>
+      <CartStatus>
         <p>Valor total</p>
         <p>
           {moneyFormatter.format(
             cartItems.reduce((prev, next) => prev + next.price, 0)
           )}
         </p>
-      </div>
-      <button onClick={cartClear}>Finalizar</button>
-    </div>
+      </CartStatus>
+      <FinishButton onClick={cartClear}>Finalizar</FinishButton>
+    </CartWrapper>
   );
 };
 
