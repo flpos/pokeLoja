@@ -21,3 +21,14 @@ export const HeaderContent = styled.div`
     padding: 16px;
   }
 `;
+
+export const SearchBar = styled.input`
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  transition: linear .2s;
+  :focus {
+    outline: none;
+    box-shadow: 0px 1px 4px black;
+  }
+`;

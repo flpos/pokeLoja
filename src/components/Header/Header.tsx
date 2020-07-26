@@ -8,7 +8,7 @@ import {
   setFilter,
 } from '../../store/ducks/pokedex/actions';
 import { Container } from '../layout';
-import { HeaderBar, HeaderContent } from './styled';
+import { HeaderBar, HeaderContent, SearchBar } from './styled';
 
 interface HeaderProps {
   types: Array<PokemonType>;
@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
     <HeaderBar>
       <Container>
         <HeaderContent>
-          <input
+          <SearchBar
             type='text'
             placeholder='Pesquisar...'
             onChange={(e) => setFilter(e.target.value)}
