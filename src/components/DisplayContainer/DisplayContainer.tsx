@@ -24,8 +24,12 @@ const DisplayContainer: React.FC<DisplayContainerProps> = (
 
 const mapStateToProps = (state: ApplicationState) => ({
   pokemon: state.pokedex.pokemon?.filter((poke) => {
-    const rgx = new RegExp(state.pokedex.filter);
-    return rgx.test(poke.name);
+    try {
+      const rgx = new RegExp(state.pokedex.filter, 'i');
+      return rgx.test(poke.name);
+    } catch (e) {
+      return false;
+    }
   }),
   loading: state.pokedex.loading,
 });
