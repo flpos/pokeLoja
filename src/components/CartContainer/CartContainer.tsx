@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import moneyFormatter from '../../util/moneyFormatter';
 import CartItem from './CartItem';
 import { cartClear } from '../../store/ducks/cart/actions';
-import { CartWrapper, ItemContainer, CartStatus, FinishButton } from './styled';
+import { CartWrapper, ItemContainer, CartStatus, Button, Icon } from './styled';
 
 interface CartProps {
   cartItems: Array<IndexedPokemon>;
@@ -14,9 +14,14 @@ interface CartProps {
 
 const Cart: React.FC<CartProps> = (props: CartProps) => {
   const { cartItems, cartClear } = props;
+  const [showMobileCart, setShowMobileCart] = useState(false);
   return (
     <CartWrapper>
-      <ItemContainer>
+      <Button showMobile onClick={() => setShowMobileCart(!showMobileCart)}>
+        {showMobileCart && <Icon />}
+        Carrinho: {cartItems.length ? `${cartItems.length} Pokemon` : 'vazio'}
+      </Button>
+      <ItemContainer showMobile={showMobileCart}>
         {cartItems.map((cartItem, i) => (
           <CartItem
             key={`cartItem${cartItem.id * (i + 1)}`}
@@ -25,7 +30,7 @@ const Cart: React.FC<CartProps> = (props: CartProps) => {
           />
         ))}
       </ItemContainer>
-      <CartStatus>
+      <CartStatus showMobile={showMobileCart}>
         <p>Valor total</p>
         <p>
           {moneyFormatter.format(
@@ -33,7 +38,9 @@ const Cart: React.FC<CartProps> = (props: CartProps) => {
           )}
         </p>
       </CartStatus>
-      <FinishButton onClick={cartClear}>Finalizar</FinishButton>
+      <Button onClick={cartClear} showMobile={showMobileCart}>
+        Finalizar
+      </Button>
     </CartWrapper>
   );
 };

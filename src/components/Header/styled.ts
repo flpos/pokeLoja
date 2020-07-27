@@ -20,7 +20,7 @@ export const HeaderContent = styled.div`
   @media (max-width: 960px) {
     padding: 16px;
   }
-  @media (max-width: 425px) {
+  @media (max-width: 450px) {
     flex-direction: column;
     align-items: stretch;
     height: auto;
@@ -47,7 +47,7 @@ export const Label = styled.label`
   align-items: baseline;
   justify-content: space-between;
   font-size: 13px;
-  @media (max-width: 425px) {
+  @media (max-width: 450px) {
     margin-top: 8px;
   }
 `;
