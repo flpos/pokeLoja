@@ -1,3 +1,5 @@
+URL da aplicação: https://flpos.github.io/pokeLoja/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
