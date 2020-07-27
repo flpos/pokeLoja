@@ -21,5 +21,11 @@ export default createReducer(INIT_STATE)
     list: state.list.filter((_, i) => i !== action.payload),
   }))
   .handleAction(cartClear, () => INIT_STATE)
-  .handleAction(openFinishModal, () => INIT_STATE)
+  .handleAction(openFinishModal, (state) => ({
+    ...state,
+    finishModal: {
+      itens: state.list.length,
+      totalPrice: state.list.reduce((prev, next) => prev + next.price, 0),
+    },
+  }))
   .handleAction(closeFinishModal, () => INIT_STATE);

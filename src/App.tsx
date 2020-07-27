@@ -13,6 +13,7 @@ import {
   Aside,
 } from './components/layout';
 import { theme, GlobalStyle } from './theme';
+import EndingModal from './components/EndingModal';
 
 interface AppProps {
   selectedType?: PokemonType;
@@ -36,6 +37,7 @@ const App: React.FC<AppProps> = (props) => {
         </Container>
       </ApplicationWrapper>
       <GlobalStyle />
+      <EndingModal />
     </ThemeProvider>
   );
 };

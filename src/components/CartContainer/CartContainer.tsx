@@ -4,16 +4,16 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import moneyFormatter from '../../util/moneyFormatter';
 import CartItem from './CartItem';
-import { cartClear } from '../../store/ducks/cart/actions';
+import { openFinishModal } from '../../store/ducks/cart/actions';
 import { CartWrapper, ItemContainer, CartStatus, Button, Icon } from './styled';
 
 interface CartProps {
   cartItems: Array<IndexedPokemon>;
-  cartClear: typeof cartClear;
+  openFinishModal: typeof openFinishModal;
 }
 
 const Cart: React.FC<CartProps> = (props: CartProps) => {
-  const { cartItems, cartClear } = props;
+  const { cartItems, openFinishModal } = props;
   const [showMobileCart, setShowMobileCart] = useState(false);
   return (
     <CartWrapper>
@@ -38,7 +38,7 @@ const Cart: React.FC<CartProps> = (props: CartProps) => {
           )}
         </p>
       </CartStatus>
-      <Button onClick={cartClear} showMobile={showMobileCart}>
+      <Button onClick={openFinishModal} showMobile={showMobileCart}>
         Finalizar
       </Button>
     </CartWrapper>
@@ -49,6 +49,6 @@ const mapStateToProps = (state: ApplicationState) => ({
   cartItems: state.cart.list,
 });
 const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators({ cartClear }, dispatch);
+  bindActionCreators({ openFinishModal }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
